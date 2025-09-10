@@ -1,3 +1,4 @@
+import { Form } from "./components/form"
 import {Container,Title} from "./styles/container"
 import GlobalStyle from "./styles/global"
 import {ToastContainer , toast} from "react-toastify"
@@ -9,10 +10,10 @@ export const App = () => {
         <>
             <Container>
                 <Title>USUÁRIOS</Title>
+                <Form/>
             </Container>
-            <ToastContainer autoClose={3000} position={toast.POSITION.BOTTOM_LEFT} />
+            <ToastContainer autoClose={3000} position="bottom-left" />
             <GlobalStyle/>
         </>
     )
 }
-

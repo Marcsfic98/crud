@@ -26,6 +26,16 @@ const Input = styled.input`
 `
 const Label = styled.label``
 
+const Button = styled.button`
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    border: none;
+    background-color: #2c73d2;
+    color: white;
+    height: 42px;
+`
+
 
 export function Form({onEdit}) {
 
@@ -37,6 +47,24 @@ export function Form({onEdit}) {
             <Label>Nome</Label>
             <Input name="nome" />
         </InputArea>
+
+        <InputArea>
+            <Label>Email</Label>
+            <Input name="email" type='email'/>
+        </InputArea>
+
+        <InputArea>
+            <Label>Telefone</Label>
+            <Input name="fone" />
+        </InputArea>
+
+        <InputArea>
+            <Label>Data de Nascimento</Label>
+            <Input name="date" type='date' />
+        </InputArea>
+
+        <Button type="submit">SALVAR</Button>
+
     </FormContainer>
   );
 }
