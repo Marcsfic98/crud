@@ -9,6 +9,6 @@ const Container = styled.div`
     align-items: center;
     gap:10px;
 `
+const Title = styled.h2``
 
-
-export default Container
+export {Container, Title}
