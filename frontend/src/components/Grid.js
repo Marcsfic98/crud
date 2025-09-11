@@ -1,6 +1,7 @@
-import React from 'react';
-import { View } from 'react-native';
+import {FaTrash, FaEdit} from 'react-icons/fa'
 import styled from 'styled-components';
+import axios from 'axios'
+import { toast } from 'react-toastify';
 
 const Table = styled.table`
     width: 100%;
@@ -13,10 +14,56 @@ const Table = styled.table`
     word-break: break-all;
 `
 
-export function Grid() {
-  return (
-    <>
+export const Thead = styled.thead``
 
-    </>
+export const Tr = styled.tr``
+
+export const Th = styled.th`
+    text-align: start;
+    border-bottom: inset;
+    padding-bottom: 5px;
+
+    @media (max-width:500px){
+        ${(props) => props.onlyWeb && "display:none"}
+    }
+    
+`
+
+export const Tbody = styled.tbody``
+
+export const Td = styled.td`
+    padding-top: 15px;
+    text-align: ${(props) => props.alignCenter ? "center" : "start"};
+    width: ${(props) => props.width ? props.width : "auto" };
+
+     @media (max-width:500px){
+        ${(props) => props.onlyWeb && "display:none"}
+    }
+`
+
+export function Grid({users}) {
+  return (
+    <Table>
+        <Thead>
+            <Tr>
+                <Th>Nome</Th>
+                <Th>Email</Th>
+                <Th onlyWeb >Fone</Th>
+                <Th>Data de nascimento</Th>
+                
+            </Tr>
+        </Thead>
+        <Tbody>
+            {users.map((item , i) => (
+                <Tr key={i}>
+                    <Td width="30%">{item.nome}</Td>
+                    <Td width="30%">{item.email}</Td>
+                    <Td onlyWeb width="20%">{item.fone}</Td>
+                    <Td alignCenter width="5%"><FaEdit/></Td>
+                    <Td alignCenter width="5%"><FaTrash  /></Td>
+                </Tr>
+            ))}
+        </Tbody>
+    </Table>
   );
 }
