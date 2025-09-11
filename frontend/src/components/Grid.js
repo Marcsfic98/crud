@@ -49,14 +49,13 @@ export function Grid({users}) {
                 <Th>Nome</Th>
                 <Th>Email</Th>
                 <Th onlyWeb >Fone</Th>
-                <Th>Data de nascimento</Th>
                 
             </Tr>
         </Thead>
         <Tbody>
             {users.map((item , i) => (
                 <Tr key={i}>
-                    <Td width="30%">{item.nome}</Td>
+                    <Td width="30%">{item.name}</Td>
                     <Td width="30%">{item.email}</Td>
                     <Td onlyWeb width="20%">{item.fone}</Td>
                     <Td alignCenter width="5%"><FaEdit/></Td>
