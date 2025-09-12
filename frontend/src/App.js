@@ -30,7 +30,7 @@ export const App = () => {
         <>
             <Container>
                 <Title>USUÁRIOS</Title>
-                <Form/>
+                <Form onEdit={onEdit} getUsers={getUsers} setOnEdit={setOnEdit}/>
                 <Grid users={users} setUsers={setUsers} setOnEdit={setOnEdit} />
             </Container>
             <ToastContainer autoClose={3000} position="bottom-left" />

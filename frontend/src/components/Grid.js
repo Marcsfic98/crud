@@ -53,6 +53,10 @@ export function Grid({users,setUsers,setOnEdit}) {
         }).catch(({data})=> toast.error(data));
 
         setOnEdit(null)
+    };
+
+    const handleEdit = async (item) => {
+        setOnEdit(item)
     }
 
   return (
