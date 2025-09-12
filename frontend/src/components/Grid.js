@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import axios from 'axios'
 import { toast } from 'react-toastify';
 
+
 const Table = styled.table`
     width: 100%;
     background-color:#fff;
@@ -41,12 +42,17 @@ export const Td = styled.td`
     }
 `
 
-export function Grid({users}) {
+export function Grid({users,setUsers,setOnEdit}) {
 
     const handleDelete = async (id) => {
         await axios.delete("http://localhost:8800/"+id).then(({data})=> {
-            const new
-        })
+            const newArray = users.filter((user) => user.id !== id);
+
+            setUsers(newArray);
+            toast.success(data);
+        }).catch(({data})=> toast.error(data));
+
+        setOnEdit(null)
     }
 
   return (
@@ -65,7 +71,7 @@ export function Grid({users}) {
                     <Td width="30%">{item.name}</Td>
                     <Td width="30%">{item.email}</Td>
                     <Td onlyWeb width="20%">{item.fone}</Td>
-                    <Td alignCenter width="5%"><FaEdit/></Td>
+                    <Td alignCenter width="5%"><FaEdit onClick={()=> handleEdit(item)} /></Td>
                     <Td alignCenter width="5%"><FaTrash onClick={() => handleDelete(item.id)} /></Td>
                 </Tr>
             ))}
