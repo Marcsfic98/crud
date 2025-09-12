@@ -42,6 +42,13 @@ export const Td = styled.td`
 `
 
 export function Grid({users}) {
+
+    const handleDelete = async (id) => {
+        await axios.delete("http://localhost:8800/"+id).then(({data})=> {
+            const new
+        })
+    }
+
   return (
     <Table>
         <Thead>
@@ -59,7 +66,7 @@ export function Grid({users}) {
                     <Td width="30%">{item.email}</Td>
                     <Td onlyWeb width="20%">{item.fone}</Td>
                     <Td alignCenter width="5%"><FaEdit/></Td>
-                    <Td alignCenter width="5%"><FaTrash  /></Td>
+                    <Td alignCenter width="5%"><FaTrash onClick={() => handleDelete(item.id)} /></Td>
                 </Tr>
             ))}
         </Tbody>
