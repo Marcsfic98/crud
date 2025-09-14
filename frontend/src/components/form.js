@@ -39,7 +39,7 @@ const Button = styled.button`
 `
 
 
-export function Form({onEdit}) {
+export function Form({onEdit ,setOnEdit ,getUsers}) {
 
         const ref = useRef();
 
@@ -75,7 +75,22 @@ export function Form({onEdit}) {
                 fone: user.fone.value,
                 date: user.date.value
             }).then(({data}) => toast.success(data)).catch(({data}) => toast.error(data))
+        } else {
+            await axios.post("http://localhost:8800/" , {
+                 nome:user.name.value,
+                email: user.email.value,
+                fone: user.fone.value,
+                date: user.date.value
+            }).then(({data}) => toast.success(data)).catch(({data}) => toast.error(data))
         }
+
+        user.name.value = "";
+        user.email.value = "";
+        user.fone.value = "";
+        user.data.value = "";
+
+        setOnEdit(null);
+        getUsers();
     }
 
 
