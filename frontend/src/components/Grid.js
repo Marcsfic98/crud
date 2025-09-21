@@ -19,6 +19,7 @@ export const Thead = styled.thead``
 
 export const Tr = styled.tr``
 
+
 export const Th = styled.th`
     text-align: start;
     border-bottom: inset;
