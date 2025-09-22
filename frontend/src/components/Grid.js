@@ -68,7 +68,8 @@ export function Grid({users,setUsers,setOnEdit}) {
                 <Th>Nome</Th>
                 <Th>Email</Th>
                 <Th onlyWeb >Fone</Th>
-                
+                <Th></Th>
+                <Th></Th>
             </Tr>
         </Thead>
         <Tbody>
