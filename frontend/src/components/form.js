@@ -70,14 +70,14 @@ export function Form({onEdit ,setOnEdit ,getUsers}) {
 
         if(onEdit){
             await axios.put("http://localhost:8800/" + onEdit.id ,{
-                nome:user.name.value,
+                name:user.name.value,
                 email: user.email.value,
                 fone: user.fone.value,
                 date: user.date.value
             }).then(({data}) => toast.success(data)).catch(({data}) => toast.error(data))
         } else {
             await axios.post("http://localhost:8800/" , {
-                 nome:user.name.value,
+                 name:user.name.value,
                 email: user.email.value,
                 fone: user.fone.value,
                 date: user.date.value
@@ -87,7 +87,7 @@ export function Form({onEdit ,setOnEdit ,getUsers}) {
         user.name.value = "";
         user.email.value = "";
         user.fone.value = "";
-        user.data.value = "";
+        user.date.value = "";
 
         setOnEdit(null);
         getUsers();
@@ -99,7 +99,7 @@ export function Form({onEdit ,setOnEdit ,getUsers}) {
     <FormContainer ref={ref} onSubmit={handleSubmit}>
         <InputArea>
             <Label>Nome</Label>
-            <Input name="nome" />
+            <Input name="name" />
         </InputArea>
 
         <InputArea>
