@@ -8,12 +8,11 @@ export const getUsers = (_,res)=> {
 
         return res.status(200).json(data);
     });
-
-
 };
 
 export const addUser = (req,res) => {
-    const q = "INSERT INTO users(`name`,`email`,`fone`,`date`) VALUES(?),";
+    
+    const q = "INSERT INTO users(`name`,`email`,`fone`,`date`) VALUES(?)";
 
     const values =[
         req.body.name,
@@ -22,15 +21,17 @@ export const addUser = (req,res) => {
         req.body.date,
     ];
 
+    
     db.query(q,[values], (err) => {
         if(err) return res.json(err);
 
         return res.status(200).json("Usuário criado com sucesso");
-    })
+    });
 };
 
 export const updateUser = (req, res) => {
-    const q = "UPDATE users SET `name` = ? , `email` =?,`fone` = ?,`date` = ?, WHERE `id` = ?";
+    
+    const q = "UPDATE users SET `name` = ? , `email` =?,`fone` = ?,`date` = ? WHERE `id` = ?";
 
     const values =[
         req.body.name,
@@ -44,10 +45,9 @@ export const updateUser = (req, res) => {
         if(err) return res.json(err);
 
         return res.status(200).json("Usuário atualizado com sucesso");
-    })
+    });
 
 };
-
 
 export const deleteUser = (req,res) => {
     const q ="DELETE FROM users WHERE `id` = ?";
@@ -56,5 +56,5 @@ export const deleteUser = (req,res) => {
         if(err) return res.json(err);
 
         return res.status(200).json("Usuário deletado com sucesso");
-    })
-}
+    });
+};

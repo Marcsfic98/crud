@@ -46,6 +46,10 @@ export const Td = styled.td`
 
 export function Grid({users,setUsers,setOnEdit}) {
 
+     const handleEdit = (item) => {
+        setOnEdit(item)
+    }
+
     const handleDelete = async (id) => {
         await axios.delete("http://localhost:8800/"+id).then(({data})=> {
             const newArray = users.filter((user) => user.id !== id);
@@ -57,9 +61,7 @@ export function Grid({users,setUsers,setOnEdit}) {
         setOnEdit(null)
     };
 
-    const handleEdit = async (item) => {
-        setOnEdit(item)
-    }
+   
 
   return (
     <Table>

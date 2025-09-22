@@ -41,7 +41,7 @@ const Button = styled.button`
 
 export function Form({onEdit ,setOnEdit ,getUsers}) {
 
-        const ref = useRef();
+     const ref = useRef();
 
     useEffect(()=>{
         if(onEdit){
@@ -52,7 +52,7 @@ export function Form({onEdit ,setOnEdit ,getUsers}) {
             user.fone.value = onEdit.fone;
             user.date.value = onEdit.date;
         }
-    });
+    },[onEdit]);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
